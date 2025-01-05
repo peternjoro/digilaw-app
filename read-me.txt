@@ -1,0 +1,59 @@
+Use a consistent format across the entire app
+    - use PascalCase for components - capitalizing the first letter of each word, with no spaces or separators between words
+    - use camelCase for function names - capitalizing the first letter of each word except for the first word
+    - use kebab-case for file names (other than pages)
+
+    Kebab case -- or kebab-case -- is a programming variable naming convention where a developer replaces the spaces between words with a dash, e.g
+    first-name, LAST-NAME, etc
+
+    Keep Components Small: Aim for single-responsibility components to improve readability and maintainability
+
+    Use Functional Components: Favor functional components with hooks for cleaner syntax and easier state management
+
+    Memoization: Utilize React.memo() and useMemo() to prevent unnecessary re-renders, ensuring a snappy user experience
+
+    Lazy Loading: Implement dynamic imports in Next.js to split code and load components only when needed
+
+    Dynamic Routes: Use dynamic routing for pages requiring parameterized paths
+
+    Use Server-Side Rendering (getStaticProps and getServerSideProps): Optimize SEO and performance by utilizing these data-fetching methods
+
+    Error Handling: Implement robust error handling to maintain a smooth user experience
+
+    CSS Modules: Use CSS Modules for scoped styling, preventing clashes in styles across components
+
+    Styled Components: Consider styled-components for dynamic styling and theming
+
+    Unit Testing: Write comprehensive tests using Jest and React Testing Library for your components
+
+    End-to-End Testing: Implement tools like Cypress or Playwright for testing user interactions across your application
+
+    https://alerty.ai/blog/next-js-speed-optimization
+
+Organize components by feature or module, and create folders for each feature to place related components inside. This improves readability and
+maintainability, do the same inside _ui & lib folders and sub-folders
+
+
+
+Next.js is a powerful React framework designed to simplify the process of creating scalable and reliable web applications. Next.js promises faster
+loading times and improved user experiences using server-side rendering and intelligent code splitting. One of its unique characteristics is that
+it allows React components to use server-side rendering, which improves SEO and speeds up page loading. Moreover, Next.js provides a user-friendly
+routing API that makes navigation easy to understand. Because it allows for an efficient development method and supports client-side and
+server-side rendering, Next.js is an adaptive and exciting choice for modern web application development.
+https://www.augustinfotech.com/blogs/nextjs-best-practices-in-2024/
+
+OOP in next.js  https://iqbalpa.medium.com/mastering-next-js-best-practices-for-clean-scalable-and-type-safe-development-2ee5693e73a9
+
+
+Next.js Server Actions vs Backend
+When deciding between using Server Actions or a separate backend with Next.js App Router, consider the complexity and requirements of your
+application. Server Actions are a feature in Next.js that allow you to define server-side logic directly within your React components, which can
+simplify your code and improve performance by eliminating the need for an extra HTTP request. They are particularly useful for simpler,
+component-specific server-side logic and can be more efficient for applications with relatively simple to moderate server-side operations.
+
+However, if your application requires complex server-side logic, advanced server-side features, or if you need to leverage the full capabilities
+of a dedicated server-side framework, using a separate backend application may be the better choice. A separate backend introduces additional
+complexity in setup and management but offers greater flexibility and scalability.
+
+In summary, for simpler applications, Server Actions can provide a streamlined and efficient development experience. For more complex applications,
+a separate backend might be necessary to handle the intricacies and scale effectively.

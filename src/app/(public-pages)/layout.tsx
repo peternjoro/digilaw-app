@@ -1,4 +1,4 @@
-import FrontendHeader from "@/components/nav/frontend-header";
+import FrontendHeader from "@/components/nav/FrontendHeader";
 
 //* layout to be shared by all public pages including index page
 //* NB: if you put <html> and/or <body> tags in this layout, Next.js will complain about hydration error

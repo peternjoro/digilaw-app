@@ -14,8 +14,50 @@
   }
 }
 
+/* modify appearance of a number input box in the entire app */
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+}
+
+/* Text LINK */
+.clickableText {
+  @apply text-cyan-600 hover:underline underline-offset-2;
+}
+
+/* INPUT FIELDS */
+.inputField {
+  @apply block w-full rounded-md border py-2 pl-10 outline-2 placeholder:text-gray-500;
+}
+
+.custom-phone-input {
+  border: 1px solid #123669;
+  border-radius: 7px;
+  padding: 1px;
+  /*background-color: #f0f0f0;*/
+}
+
+
+/* ICONS */
+.iconInputFieldStart {
+  @apply pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2;
 }

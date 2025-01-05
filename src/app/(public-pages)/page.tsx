@@ -1,4 +1,4 @@
-import HorizontalLine from "@/components/horizontal-line";
+import HorizontalLine from "@/components/HorizontalLine";
 import { IconFileSearch, IconUploadFile, IconUsersRound } from "../_ui/icons";
 import FrontendFooter from "../_ui/frontend/footer";
 
