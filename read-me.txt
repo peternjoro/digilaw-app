@@ -1,3 +1,6 @@
+NB:
+    - When installing dependencies, use --legacy-peer-deps, because of this library - react-international-phone
+
 Use a consistent format across the entire app
     - use PascalCase for components - capitalizing the first letter of each word, with no spaces or separators between words
     - use camelCase for function names - capitalizing the first letter of each word except for the first word

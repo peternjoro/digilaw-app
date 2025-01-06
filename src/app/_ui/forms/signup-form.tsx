@@ -1,11 +1,13 @@
 'use client';
 
-import { useActionState, useState } from "react";
+import { memo, useActionState, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { Button } from "@/components/Button";
 import { IconAtSign, IconCircleArrowRight, IconKeyRound, IconUserCircle } from "../icons";
 import PhoneNumberInput from "@/components/input-fields/PhoneNumberInput";
 import { CreateAccountState, createUserAccount } from "@/lib/server-actions";
+import FormErrors from "@/lib/errors/form-errors";
+import ErrorMessage from "@/components/form-errors/ErrorMessage";
 
 
 const cur_state = {
@@ -13,10 +15,15 @@ const cur_state = {
     show_conf_pwd:false
 }
 
-export default function SignupForm() {
+//*use memo to memoize the component - i.e only re-render the component when its own props change but not it's parent
+
+//* NB: useActionState() that returns some tructured data might show you errors here when no implementation is done in the server-action
+//* NB: useActionState() returns a default 'isPending' value indicating the action is processing
+
+const SignupForm = memo(function SignupForm() {
     const [curState, setCurState] = useState(cur_state);
-    const initialState: CreateAccountState= { message: null, errors: {} };
-    const [formState, formAction] = useActionState(createUserAccount, initialState);
+    const initialState: CreateAccountState = { message: null, errors: {} };
+    const [formState, formAction, isPending] = useActionState(createUserAccount, initialState);
 
     const onFocusOut = (elm:string, inputValue:string) => {
         console.log(`Element:${elm}, value:${inputValue}`);
@@ -43,6 +50,17 @@ export default function SignupForm() {
         }
     }, 300);
 
+    //console.log(`isPending:${isPending}`);
+    //console.log(formState.errors);
+
+    const nameError = FormErrors.findError("fullNames",formState.errors);
+    const emailError = FormErrors.findError("email",formState.errors);
+    const phoneError = FormErrors.findError("phone_number",formState.errors);
+    const passwordError = FormErrors.findError("password",formState.errors);
+    const confPasswordError = FormErrors.findError("confPassword",formState.errors);
+
+    console.log(`SignupForm re-rendered`);
+
 
     return (
         <form action={formAction} className="text-sm space-y-5">
@@ -64,6 +82,7 @@ export default function SignupForm() {
                         <IconUserCircle className="iconInputFieldStart text-gray-500"/>
                     </div>
                 </div>
+                <ErrorMessage message={nameError}/>
             </div>
             <div className={curState.show_email_phone ? `flex flex-col` : `hidden`}>
                 <label htmlFor="email" className="block mb-1 font-medium">
@@ -83,6 +102,7 @@ export default function SignupForm() {
                         <IconAtSign className="iconInputFieldStart text-gray-500"/>
                     </div>
                 </div>
+                <ErrorMessage message={emailError}/>
             </div>
             <div className={curState.show_email_phone ? `flex flex-col` : `hidden`}>
                 <label htmlFor="phone_number" className="block mb-1 font-medium">
@@ -93,6 +113,7 @@ export default function SignupForm() {
                         <PhoneNumberInput/>
                     </div>
                 </div>
+                <ErrorMessage message={phoneError}/>
             </div>
             <div>
                 <label htmlFor="password" className="block mb-1 font-medium">
@@ -112,6 +133,7 @@ export default function SignupForm() {
                         <IconKeyRound className="iconInputFieldStart text-gray-500"/>
                     </div>
                 </div>
+                <ErrorMessage message={passwordError}/>
             </div>
             <div className={curState.show_conf_pwd ? `flex flex-col` : `hidden`}>
                 <label htmlFor="conf-password" className="block mb-1 font-medium">
@@ -130,6 +152,7 @@ export default function SignupForm() {
                         <IconKeyRound className="iconInputFieldStart text-gray-500"/>
                     </div>
                 </div>
+                <ErrorMessage message={confPasswordError}/>
             </div>
             {/* if form errors are encountered */}
             {formState.message &&(
@@ -146,4 +169,6 @@ export default function SignupForm() {
             </div>
         </form>
     )
-}
+});
+
+export default SignupForm;

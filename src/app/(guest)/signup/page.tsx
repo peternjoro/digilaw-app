@@ -1,16 +1,13 @@
 import { Metadata } from "next";
-import SignupUI from "@/app/_ui/guest/signup";
-
+import SignupPageClient from "./page.client";
 
 export const metadata:Metadata = {
     title: 'Signup'
 }
 
+//*NB: A next.js page cannot use hooks, a client component cannot set metadata
+
 export default function SignupPage() {
 
-    return (
-        <main className="flex flex-col w-full h-screen items-center md:items-start justify-center">
-            <SignupUI />
-        </main>
-    )
+    return <SignupPageClient/>
 }

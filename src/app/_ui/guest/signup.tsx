@@ -1,6 +1,6 @@
-'use client';
+//'use client';
 
-import { useState } from "react";
+import { memo, useCallback, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { classNames } from "@/lib/utils";
@@ -14,7 +14,9 @@ const signupState = {
     signupType: '',
 }
 
-export default function SignupUI() {
+//*use memo to get a memoized version of the component - will not be re-rendered when its parent component is re-rendered as long as its props have not changed
+//memo(function SignupUI()
+const SignupUI = () => {
     const [curState, setCurState] = useState(signupState);
 
     const onsignupWithGoogle = () => {
@@ -25,7 +27,8 @@ export default function SignupUI() {
         setCurState({...curState, signupType:'create-account'});
     }
 
-    const renderVariableUI = () => {
+    //*only call this fxn when curState.signupType changes
+    const renderVariableUI = useCallback(() => {
         if(curState.signupType == "create-account") {
             return (
                 <SignupForm/>
@@ -41,11 +44,13 @@ export default function SignupUI() {
                 </Button>
             </div>
         )
-    }
+    },[curState.signupType]);
+
+    console.log(`SignupUI re-rendered`);
 
     return (
         <div className="flex flex-col w-full">
-            <div className="flex space-x-1">
+            <div className={classNames(`flex space-x-1`,curState.signupType == 'create-account' ? `mt-10`:`mt-3`)}>
                 <button className={classNames(curState.signupType == 'create-account' ? `flex`:`hidden`,
                     `rounded-full bg-white h-8 w-8 outline outline-1 outline-slate-300 justify-center items-center`)}
                     onClick={() => setCurState({...curState, signupType:''})}>
@@ -55,7 +60,7 @@ export default function SignupUI() {
                     <Image alt="Logo" src="/images/logo.png" width={120} height={120} style={{ width:"auto", height:"auto" }}/>
                 </Link>
             </div>
-            <div className="flex flex-col mt-10">
+            <div className={classNames(`flex flex-col mt-10`,curState.signupType == 'create-account' ? `mb-10`:`mb-3`)}>
                 <div className="flex flex-col ml-0 md:ml-4">
                     <p className={curState.signupType == 'create-account' ? `mb-8` : `mb-12`}>Transforming Legal Processes for the Future</p>
 
@@ -80,3 +85,6 @@ export default function SignupUI() {
         </div>
     )
 }
+//);
+
+export default SignupUI;
