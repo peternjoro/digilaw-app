@@ -1,5 +1,3 @@
-'use client';
-
 import { memo, useActionState, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { Button } from "@/components/Button";
@@ -51,7 +49,7 @@ const SignupForm = memo(function SignupForm() {
     }, 300);
 
     //console.log(`isPending:${isPending}`);
-    //console.log(formState.errors);
+    //console.log(formState);
 
     const nameError = FormErrors.findError("fullNames",formState.errors);
     const emailError = FormErrors.findError("email",formState.errors);
@@ -78,6 +76,7 @@ const SignupForm = memo(function SignupForm() {
                             className="peer inputField border-myColor1 outline-none text-sm"
                             required
                             onChange={(e) => updateUI(e.target.name,e.target.value)}
+                            defaultValue={(formState.formData?.get('fullNames')??"") as string}
                             />
                         <IconUserCircle className="iconInputFieldStart text-gray-500"/>
                     </div>
@@ -98,6 +97,7 @@ const SignupForm = memo(function SignupForm() {
                             placeholder=""
                             className="peer inputField border-myColor1 outline-none text-sm"
                             required
+                            defaultValue={(formState.formData?.get('email')??"") as string}
                             />
                         <IconAtSign className="iconInputFieldStart text-gray-500"/>
                     </div>
@@ -125,10 +125,11 @@ const SignupForm = memo(function SignupForm() {
                             id="password"
                             name="password"
                             type="password"
-                            placeholder=""
+                            placeholder="6+ characters"
                             className="peer inputField border-myColor1 outline-none text-sm"
                             required
                             onChange={(e) => updateUI(e.target.name,e.target.value)}
+                            defaultValue={(formState.formData?.get('password')??"") as string}
                             />
                         <IconKeyRound className="iconInputFieldStart text-gray-500"/>
                     </div>
@@ -148,6 +149,7 @@ const SignupForm = memo(function SignupForm() {
                             placeholder=""
                             className="peer inputField border-myColor1 outline-none text-sm"
                             required
+                            defaultValue={(formState.formData?.get('confPassword')??"") as string}
                             />
                         <IconKeyRound className="iconInputFieldStart text-gray-500"/>
                     </div>

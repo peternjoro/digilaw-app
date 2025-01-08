@@ -23,6 +23,6 @@ export function ButtonLink({
     if(!href) return null;
 
     return (
-        <Link href={href} className={classNames(' outline outline-1',className??'')}>{text}</Link>
+        <Link href={href} className={classNames('outline outline-1',className??'')}>{text}</Link>
     )
 }

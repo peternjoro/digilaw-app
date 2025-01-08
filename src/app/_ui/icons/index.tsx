@@ -1,10 +1,14 @@
 import {
     AtSign,
+    ChevronDown,
     ChevronLeft,
     CircleArrowRight,
+    CircleCheck,
     FileSearchIcon,
     KeyRound,
     LucideProps,
+    Pencil,
+    Search,
     UploadIcon,
     UserCircle,
     UsersRoundIcon
@@ -24,6 +28,22 @@ export function IconUserCircle({...rest}: LucideProps) {
 
 export function IconAtSign({...rest}: LucideProps) {
     return <AtSign {...rest}/>
+}
+
+export function IconSearch({...rest}: LucideProps) {
+    return <Search {...rest}/>
+}
+
+export function IconChevronDown({...rest}: LucideProps) {
+    return <ChevronDown {...rest}/>
+}
+
+export function IconPencil({...rest}: LucideProps) {
+    return <Pencil {...rest}/>
+}
+
+export function IconCircleCheck({...rest}: LucideProps) {
+    return <CircleCheck {...rest}/>
 }
 
 export function IconKeyRound({...rest}: LucideProps) {

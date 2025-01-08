@@ -25,7 +25,17 @@ const config:Config = {
         myColor2: '#0B3570',
         colorOrange: '#F99F38',
         colorGrey: '#0D1B38',
-        colorGreen: '#1ABC9C'
+        colorGreen: '#1ABC9C',
+        whiteSnow: '#F5FEFD',
+        whitePearl: '#FBFCF8',
+        whiteCotton: '#FBFBF9',
+        whiteChiffon: '#FBFAF2',
+        whitePowder: '#FBFCFA',
+        whiteFrost: '#FCFBFC',
+        whiteSalt: '#F8EEEC',
+        whitePorcelain:'#FFFEFC',
+        whiteRice:'#FAF5EF',
+        whiteDaisy:'#FAFAFA'
       },
     },
   },

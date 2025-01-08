@@ -1,8 +1,4 @@
 // This file contains type definitions for your data.
 // It describes the shape of the data, and what data type each property should accept.
 
-//* common definitions here
-
-export type StringType = string;
-
-export type NumberType = number;
+//* definitions for payments here

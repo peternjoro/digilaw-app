@@ -5,7 +5,7 @@ export const metadata:Metadata = {
     title: 'Signup'
 }
 
-//*NB: A next.js page cannot use hooks, a client component cannot set metadata
+//*NB: A next.js page cannot use client hooks (e.g useEffect), a client component cannot set metadata
 
 export default function SignupPage() {
 

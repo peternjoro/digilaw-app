@@ -1,5 +1,3 @@
-//'use client';
-
 import { memo, useCallback, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,8 +13,8 @@ const signupState = {
 }
 
 //*use memo to get a memoized version of the component - will not be re-rendered when its parent component is re-rendered as long as its props have not changed
-//memo(function SignupUI()
-const SignupUI = () => {
+//
+const SignupUI = memo(function SignupUI() {
     const [curState, setCurState] = useState(signupState);
 
     const onsignupWithGoogle = () => {
@@ -27,7 +25,7 @@ const SignupUI = () => {
         setCurState({...curState, signupType:'create-account'});
     }
 
-    //*only call this fxn when curState.signupType changes
+    //*only call this fxn when curState.signupType changes - that is where useCallback() hook comes in
     const renderVariableUI = useCallback(() => {
         if(curState.signupType == "create-account") {
             return (
@@ -84,7 +82,6 @@ const SignupUI = () => {
             </div>
         </div>
     )
-}
-//);
+});
 
 export default SignupUI;

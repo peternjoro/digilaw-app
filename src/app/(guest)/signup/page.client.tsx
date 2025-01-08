@@ -11,8 +11,8 @@ export default function SignupPageClient() {
     const [hvalOnSm, setHvalOnSm] = useState('h-screen');
 
 
-    console.log('---------------');
-    console.log(viewPortState);
+    //console.log('---------------');
+    //console.log(viewPortState);
 
     useEffect(() => {
         //check viewport size (width) - by default, width of mobile in tailwind is 640px
