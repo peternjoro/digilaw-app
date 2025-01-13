@@ -4,6 +4,7 @@ import PaymentDueViewStat from "@/components/payment-stats/DueViewStat";
 import { SelectInput } from "@/components/input-fields/SelectInput";
 import StaticData from "@/lib/data";
 
+
 const FilterCriteria = StaticData.business_overview_filter;
 
 const BusinessOverview = memo(function BusinessOverview() {
